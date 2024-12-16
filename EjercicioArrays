@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Arrays</title>
+</head>
+<body>
+    
+</body>
+<?php
+
+//Ejercicio1
+$datos = array(
+    "nombre" => "Quim",
+    "apellido" => "Pastor",
+    "edad" => 20,
+    "ciudad" => "Barcelona"
+);
+
+
+echo "<h3>Ejercicio 1</h3>";
+$contador = 1;     
+foreach ($datos as $clave => $valor) {
+    echo "dato " .$contador. "º :" .$valor."<br>";
+    $contador++;
+}
+
+// Ejercicio2: 
+echo "<h3>Ejercicio 2</h3>";
+foreach ($datos as $clave => $valor) {
+    echo "$clave: $valor<br>";
+}
+
+// Ejercicio3: 
+$datos["edad"] = 24;
+echo "<h3>Ejercicio 3</h3>";
+$contador = 1;
+foreach ($datos as $clave => $valor) {
+    echo "dato {$contador}º: $valor<br>";
+    $contador++;
+}
+
+// Ejercicio4: 
+
+unset($datos["ciudad"]); 
+echo "<h3>Ejercicio 4</h3>";
+var_dump($datos);
+
+//Ejercicio5:
+
+$letters = "a,b,c,d,e,f";
+$array_letters = explode(",", $letters); 
+$array_letters = array_reverse($array_letters); 
+
+// Mostrar los resultados
+echo "<h3>Ejercicio 5</h3>";
+foreach ($array_letters as $index => $letter) {
+    echo "letter " . (count($array_letters) - $index) . "°: $letter <br>";
+}
+
+
+//Ejercicio 6:
+$notas = [
+    "Miguel" => 5,
+    "Luis" => 7,
+    "Marta" => 10,
+    "Isabel" => 8,
+    "Aitor" => 4,
+    "Pepe" => 1
+];
+
+
+arsort($notas); 
+echo "<h3>Ejercicio 6</h3>";
+echo "<p>Notas de los estudiantes ordenadas:</p>";
+foreach ($notas as $nombre => $nota) {
+    echo "$nombre: $nota <br>";
+}
+
+//Ejercicio 7:
+$media = array_sum($notas) / count($notas); 
+echo "<h3>Ejercicio 7</h3>";
+echo "Media de las notas: " . number_format($media, 2) . "<br>";
+echo "Alumnos con nota superior a la media:<br>";
+foreach ($notas as $nombre => $nota) {
+    if ($nota > $media) {
+        echo "$nombre <br>";
+    }
+}
+
+//Ejercicio 8: 
+$nota_max = max($notas); 
+$mejor_alumno = array_search($nota_max, $notas);
+echo "<h3>Ejercicio 8</h3>";
+echo "La nota más alta es $nota_max y el mejor alumno es $mejor_alumno.";
+
+
+
+
+?>
+
