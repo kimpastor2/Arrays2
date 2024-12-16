@@ -10,7 +10,7 @@
 </body>
 <?php
 
-//Ejercicio1
+// Ejercicio 1: Crear un array asociativo y mostrar sus valores con un contador
 $datos = array(
     "nombre" => "Quim",
     "apellido" => "Pastor",
@@ -18,49 +18,86 @@ $datos = array(
     "ciudad" => "Barcelona"
 );
 
-
 echo "<h3>Ejercicio 1</h3>";
-$contador = 1;     
+$contador = 1; // Inicia un contador para numerar los datos
 foreach ($datos as $clave => $valor) {
-    echo "dato " .$contador. "º :" .$valor."<br>";
+    // Muestra los valores del array con el contador
+    echo "dato " . $contador . "º :" . $valor . "<br>";
     $contador++;
 }
+/*
+   Salida en pantalla:
+   dato 1º :Quim
+   dato 2º :Pastor
+   dato 3º :20
+   dato 4º :Barcelona
+*/
 
-// Ejercicio2: 
+// Ejercicio 2: Mostrar claves y valores
 echo "<h3>Ejercicio 2</h3>";
 foreach ($datos as $clave => $valor) {
+    // Muestra el par clave:valor
     echo "$clave: $valor<br>";
 }
+/*
+   Salida en pantalla:
+   nombre: Quim
+   apellido: Pastor
+   edad: 20
+   ciudad: Barcelona
+*/
 
-// Ejercicio3: 
-$datos["edad"] = 24;
+// Ejercicio 3: Modificar el valor de un elemento y mostrar el array nuevamente
+$datos["edad"] = 24; // Cambia la edad de 20 a 24
 echo "<h3>Ejercicio 3</h3>";
-$contador = 1;
+$contador = 1; // Reinicia el contador
 foreach ($datos as $clave => $valor) {
+    // Muestra los valores del array con el contador actualizado
     echo "dato {$contador}º: $valor<br>";
     $contador++;
 }
+/*
+   Salida en pantalla:
+   dato 1º: Quim
+   dato 2º: Pastor
+   dato 3º: 24
+   dato 4º: Barcelona
+*/
 
-// Ejercicio4: 
-
-unset($datos["ciudad"]); 
+// Ejercicio 4: Eliminar un elemento del array y mostrar el resultado con var_dump
+unset($datos["ciudad"]); // Elimina el elemento con clave "ciudad"
 echo "<h3>Ejercicio 4</h3>";
 var_dump($datos);
+/*
+   Salida en pantalla (formato de depuración):
+   array(3) {
+     ["nombre"]=> string(4) "Quim"
+     ["apellido"]=> string(6) "Pastor"
+     ["edad"]=> int(24)
+   }
+*/
 
-//Ejercicio5:
+// Ejercicio 5: Convertir una cadena de letras en un array, invertirlo y mostrarlo
+$letters = "a,b,c,d,e,f"; // Cadena de letras separadas por comas
+$array_letters = explode(",", $letters); // Convierte la cadena en un array
+$array_letters = array_reverse($array_letters); // Invierte el array
 
-$letters = "a,b,c,d,e,f";
-$array_letters = explode(",", $letters); 
-$array_letters = array_reverse($array_letters); 
-
-// Mostrar los resultados
 echo "<h3>Ejercicio 5</h3>";
 foreach ($array_letters as $index => $letter) {
+    // Muestra las letras en orden invertido con su posición inversa
     echo "letter " . (count($array_letters) - $index) . "°: $letter <br>";
 }
+/*
+   Salida en pantalla:
+   letter 6°: f
+   letter 5°: e
+   letter 4°: d
+   letter 3°: c
+   letter 2°: b
+   letter 1°: a
+*/
 
-
-//Ejercicio 6:
+// Ejercicio 6: Ordenar notas de estudiantes de mayor a menor y mostrarlas
 $notas = [
     "Miguel" => 5,
     "Luis" => 7,
@@ -70,33 +107,51 @@ $notas = [
     "Pepe" => 1
 ];
 
-
-arsort($notas); 
+arsort($notas); // Ordena el array por valor en orden descendente
 echo "<h3>Ejercicio 6</h3>";
 echo "<p>Notas de los estudiantes ordenadas:</p>";
 foreach ($notas as $nombre => $nota) {
+    // Muestra el nombre del estudiante con su nota ordenada
     echo "$nombre: $nota <br>";
 }
+/*
+   Salida en pantalla:
+   Marta: 10
+   Isabel: 8
+   Luis: 7
+   Miguel: 5
+   Aitor: 4
+   Pepe: 1
+*/
 
-//Ejercicio 7:
-$media = array_sum($notas) / count($notas); 
+// Ejercicio 7: Calcular la media de las notas y mostrar los estudiantes con nota superior a la media
+$media = array_sum($notas) / count($notas); // Calcula la media de las notas
 echo "<h3>Ejercicio 7</h3>";
-echo "Media de las notas: " . number_format($media, 2) . "<br>";
+echo "Media de las notas: " . number_format($media, 2) . "<br>"; // Muestra la media con 2 decimales
 echo "Alumnos con nota superior a la media:<br>";
 foreach ($notas as $nombre => $nota) {
     if ($nota > $media) {
+        // Muestra los nombres de los estudiantes con nota mayor a la media
         echo "$nombre <br>";
     }
 }
+/*
+   Salida en pantalla:
+   Media de las notas: 5.83
+   Alumnos con nota superior a la media:
+   Marta
+   Isabel
+   Luis
+*/
 
-//Ejercicio 8: 
-$nota_max = max($notas); 
-$mejor_alumno = array_search($nota_max, $notas);
+// Ejercicio 8: Encontrar al estudiante con la nota más alta
+$nota_max = max($notas); // Obtiene la nota más alta
+$mejor_alumno = array_search($nota_max, $notas); // Encuentra el estudiante correspondiente
 echo "<h3>Ejercicio 8</h3>";
 echo "La nota más alta es $nota_max y el mejor alumno es $mejor_alumno.";
-
-
-
+/*
+   Salida en pantalla:
+   La nota más alta es 10 y el mejor alumno es Marta.
+*/
 
 ?>
-
